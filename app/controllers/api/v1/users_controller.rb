@@ -11,7 +11,7 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find_by(id: params[:id])
-    
+    # byebug 
     if user.access_token_expired?
       user.refresh_access_token
     end
@@ -21,16 +21,16 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     body = {
-        grant_type: "authorization_code",
-        code: params[:code],
-        redirect_uri: 'http://localhost:3000/api/v1/user',
-        client_id: ENV['CLIENT_ID'], 
-        client_secret: ENV['CLIENT_SECRET']
+      grant_type: "authorization_code",
+      code: params[:code],
+      redirect_uri: 'http://localhost:3000/api/v1/user',
+      client_id: ENV['CLIENT_ID'], 
+      client_secret: ENV['CLIENT_SECRET']
     }
     auth_response = RestClient.post('https://accounts.spotify.com/api/token', body)
     auth_params = JSON.parse(auth_response.body)
     header = {
-        Authorization: "Bearer #{auth_params["access_token"]}"
+      Authorization: "Bearer #{auth_params["access_token"]}"
     }
     
     user_response = RestClient.get("https://api.spotify.com/v1/me", header)
@@ -43,7 +43,7 @@ class Api::V1::UsersController < ApplicationController
         image = user_params["images"][0] ? user_params["images"][0]["url"] : nil
         user.image_url = image
         user.save
-        redirect_to "http://localhost:3001/", params: user
+        redirect_to "http://localhost:3001/users/#{user.id}"
     end
   end
 

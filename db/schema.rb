@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_163714) do
+ActiveRecord::Schema.define(version: 2020_12_12_224151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.boolean "private"
+    t.string "description"
+    t.string "href"
+    t.string "spotify_id"
+    t.string "images", default: [], array: true
+    t.string "items", default: [], array: true
+    t.string "uri"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -29,4 +44,5 @@ ActiveRecord::Schema.define(version: 2020_12_10_163714) do
     t.string "refresh_token"
   end
 
+  add_foreign_key "playlists", "users"
 end
