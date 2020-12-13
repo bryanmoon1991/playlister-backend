@@ -8,7 +8,7 @@ class User < ApplicationRecord
     
     
   def access_token_expired?
-    (Time.now - self.updated_at) > 3300 
+    (Time.now.utc - self.updated_at) > 3300 
   end
 
   def refresh_access_token
