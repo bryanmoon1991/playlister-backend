@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get '/user', to: "users#create"
       patch '/user', to: "users#update"
       resources :users
+      resources :playlists
     end
   end
 end
