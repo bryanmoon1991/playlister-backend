@@ -5,6 +5,7 @@ require 'JSON'
 # require 'dotenv/load'
 
 class User < ApplicationRecord
+  has_many :playlists
     
     
   def access_token_expired?

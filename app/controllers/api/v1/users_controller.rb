@@ -57,6 +57,12 @@ class Api::V1::UsersController < ApplicationController
     user.destroy
   end
 
+
+  def getMyPlaylists
+    playlists = User.find_by(id: params[:id]).playlists
+    render json: playlists
+  end
+
   private
 
   def user_params
