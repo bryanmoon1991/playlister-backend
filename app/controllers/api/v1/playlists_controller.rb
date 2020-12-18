@@ -18,6 +18,11 @@ class Api::V1::PlaylistsController < ApplicationController
         render json: playlist
     end
 
+    def destroy
+        playlist = Playlist.find(params[:id])
+        playlist.destroy
+    end
+
 
     private
 
