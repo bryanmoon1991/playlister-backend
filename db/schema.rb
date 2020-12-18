@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_12_12_224151) do
     t.string "description"
     t.string "href"
     t.string "spotify_id"
-    t.string "images", default: [], array: true
-    t.string "items", default: [], array: true
+    t.jsonb "images"
+    t.jsonb "items"
     t.string "uri"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

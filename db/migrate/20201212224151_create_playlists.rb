@@ -7,8 +7,8 @@ class CreatePlaylists < ActiveRecord::Migration[6.0]
       t.string :description
       t.string :href
       t.string :spotify_id
-      t.string :images, array: true, default: []
-      t.string :items, array: true, default: []
+      t.jsonb :images
+      t.jsonb :items
       t.string :uri
 
       t.timestamps
