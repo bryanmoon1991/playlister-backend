@@ -11,11 +11,9 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find_by(id: params[:id])
-    # byebug 
     if user.access_token_expired?
       user.refresh_access_token
     end
-
     render json: user
   end
 
