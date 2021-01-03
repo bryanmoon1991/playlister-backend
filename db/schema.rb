@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2020_12_12_224151) do
   create_table "playlists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.boolean "private"
+    t.boolean "public"
+    t.boolean "collaborative"
     t.string "description"
     t.string "href"
     t.string "spotify_id"

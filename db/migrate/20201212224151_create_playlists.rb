@@ -3,7 +3,8 @@ class CreatePlaylists < ActiveRecord::Migration[6.0]
     create_table :playlists do |t|
       t.references :user, null: false, foreign_key: true
       t.string :name
-      t.boolean :private
+      t.boolean :public
+      t.boolean :collaborative
       t.string :description
       t.string :href
       t.string :spotify_id
