@@ -5,9 +5,11 @@ class CreatePlaylists < ActiveRecord::Migration[6.0]
       t.string :name
       t.boolean :public
       t.boolean :collaborative
+      t.boolean :published
       t.string :description
       t.string :href
       t.string :spotify_id
+      t.jsonb :history
       t.jsonb :images
       t.jsonb :items
       t.string :uri
