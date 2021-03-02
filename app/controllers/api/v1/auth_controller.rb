@@ -15,6 +15,8 @@ class Api::V1::AuthController < ApplicationController
       scope: "user-library-read 
       user-library-modify 
       user-top-read 
+      user-follow-modify
+      user-follow-read
       user-modify-playback-state 
       playlist-modify-public 
       playlist-modify-private 
