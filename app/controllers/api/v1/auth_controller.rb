@@ -11,7 +11,8 @@ class Api::V1::AuthController < ApplicationController
     query_params = {
       client_id: ENV['CLIENT_ID'],
       response_type: 'code',
-      redirect_uri: 'http://localhost:3000/api/v1/user',
+      # redirect_uri: 'http://localhost:3000/api/v1/user',
+      redirect_uri: 'https://playlister-app-api.herokuapp.com/api/v1/user',
       scope: "user-library-read 
       user-library-modify 
       user-top-read 

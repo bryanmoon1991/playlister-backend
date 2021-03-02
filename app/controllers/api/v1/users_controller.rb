@@ -21,7 +21,8 @@ class Api::V1::UsersController < ApplicationController
     body = {
       grant_type: "authorization_code",
       code: params[:code],
-      redirect_uri: 'http://localhost:3000/api/v1/user',
+      # redirect_uri: 'http://localhost:3000/api/v1/user',
+      redirect_uri: 'https://playlister-app-api.herokuapp.com/api/v1/user',
       client_id: ENV['CLIENT_ID'], 
       client_secret: ENV['CLIENT_SECRET']
     }
@@ -35,13 +36,15 @@ class Api::V1::UsersController < ApplicationController
     user_params = JSON.parse(user_response.body)
     user = User.find_by(spotify_id: user_params["id"])
     if user
-        redirect_to "http://localhost:3001/users/#{user.id}"
-    else
+        # redirect_to "http://localhost:3001/users/#{user.id}"
+        redirect_to "https://playlister-frontend.herokuapp.com/#{user.id}"
+      else
         user = User.create(email: user_params["email"], display_name: user_params["display_name"], spotify_id: user_params["id"], href: user_params["href"], uri: user_params["uri"], followers: user_params["followers"]["total"], image_url: nil, access_token: auth_params["access_token"], refresh_token: auth_params["refresh_token"])
         image = user_params["images"][0] ? user_params["images"][0]["url"] : nil
         user.image_url = image
         user.save
-        redirect_to "http://localhost:3001/users/#{user.id}"
+        # redirect_to "http://localhost:3001/users/#{user.id}"
+        redirect_to "https://playlister-frontend.herokuapp.com/#{user.id}"
     end
   end
 
