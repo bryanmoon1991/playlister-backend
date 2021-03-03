@@ -8,8 +8,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # origins '*'
-    # deployed cors
-    origins 'https://playlister-frontend.herokuapp.com/'
+    origins '*', 'https://playlister-frontend.herokuapp.com/'
 
     resource '*',
       headers: :any,
