@@ -49,4 +49,3 @@ gem "active_model_serializers", "~> 0.10.11"
 gem "dotenv", "~> 2.7"
 
 gem "json", "~> 2.5"
-gem 'rails_12factor'
