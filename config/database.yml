@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['DATABASE_URL'] %>
-  # username: playlister_backend
-  # password: <%= ENV['PLAYLISTER_BACKEND_DATABASE_PASSWORD'] %>
+  database: playlister_backend_production
+  username: playlister_backend
+  password: <%= ENV['PLAYLISTER_BACKEND_DATABASE_PASSWORD'] %>
